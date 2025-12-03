@@ -259,34 +259,68 @@ h2::after {
 .project-item {
   margin-bottom: 50px;
   text-align: center;
-  background: #2a2f3a;
-  border-radius: 15px;
-  padding: 25px;
-  box-shadow: 0 8px 18px rgba(0,255,157,0.3);
-  transition: transform 0.5s, box-shadow 0.3s;
+  background: linear-gradient(135deg, #1f1f2e, #2a2f3a);
+  border-radius: 20px;
+  padding: 30px 25px;
+  box-shadow: 0 10px 25px rgba(0, 255, 157, 0.2);
+  transition: transform 0.5s ease, box-shadow 0.4s ease, background 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-item::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0,255,157,0.1) 0%, transparent 70%);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+}
+
+.project-item:hover::before {
+  transform: rotate(45deg) translate(20px, 20px);
 }
 
 .project-item:hover {
-  transform: translateY(-12px) scale(1.03);
-  box-shadow: 0 12px 25px rgba(0,255,157,0.6);
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 255, 157, 0.5);
+  background: linear-gradient(135deg, #1f1f2e, #3b2f5a);
 }
 
 .project-item img {
   max-width: 100%;
-  border-radius: 12px;
+  border-radius: 15px;
   margin-bottom: 15px;
-  transition: transform 0.5s;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .project-item:hover img {
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(1deg);
+  box-shadow: 0 10px 25px rgba(0, 255, 157, 0.4);
 }
 
 .project-item h3 {
-  font-size: 1.6rem;
-  margin-bottom: 10px;
-  color: #ff007f;
+  font-size: 1.7rem;
+  margin-bottom: 12px;
+  color: #00fff6;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
 }
+
+.project-item p {
+  color: #d0d0d0;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.project-item strong {
+  color: #ff6ec7;
+  font-weight: 600;
+}
+
 
 /* ================= CONTACT SECTION ================= */
 .contact-info {
@@ -493,7 +527,42 @@ h2::after {
   .nav-links li a {
     font-size: 18px;
   }
+  
 }
+.project-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* space between buttons */
+    margin-top: 15px;
+    cursor: 'pointer',
+}
+
+.project-link {
+    display: inline-block;
+    padding: 8px 18px;
+    background-color: #00fff6;
+    color: #000;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.project-link:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 255, 157, 0.5);
+    background-color: #00d1b5;
+}
+
+.project-link.code-link {
+    background-color: #ff6ec7;
+    color: #fff;
+}
+
+.project-link.code-link:hover {
+    background-color: #e455ab;
+}
+
 
 
 

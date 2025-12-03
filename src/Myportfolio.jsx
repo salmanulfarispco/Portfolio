@@ -1,24 +1,31 @@
 import "./Portfolio.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css"; // AOS CSS
 import salmanPort from "./assets/salmanport.png";
 import screenshot from './assets/screenshot.png';
 import foodImage from './assets/food.png';
-import Todolist from './assets/todo.png';
+import Todolist from './assets/Typing.png';
 import Doctor from './assets/doctor.png';
-import Qatar from './assets/qatar.png'
-
-
-
+import Qatar from './assets/qatar.png';
 
 function Myportfolio() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [hover, setHover] = useState(false);
 
+    // Initialize AOS
+    useEffect(() => {
+        AOS.init({
+            duration: 1000, // animation duration
+            once: true, // animate only once
+        });
+    }, []);
+
     return (
         <div>
             {/* Navbar */}
-            <nav className="navbar">
+            <nav className="navbar" data-aos="fade-down">
                 <a href="#home" className="logo">Portfolio</a>
 
                 {/* Hamburger Menu */}
@@ -43,7 +50,7 @@ function Myportfolio() {
             </nav>
 
             {/* Home Section */}
-            <section className="home" id="home">
+            <section className="home" id="home" data-aos="fade-up">
                 <div className="home-info">
                     <h1>Salmanul Faris P C O</h1>
                     <h2>I'm a Web Developer</h2>
@@ -79,7 +86,7 @@ function Myportfolio() {
                             <a href="https://github.com/salmanulfarispco" target="_blank" rel="noopener noreferrer">
                                 <FaGithub size={25} />
                             </a>
-                            <a href="www.linkedin.com/in/salmanul-faris-p-c-o-3b5459345" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.linkedin.com/in/salmanul-faris-p-c-o-3b5459345" target="_blank" rel="noopener noreferrer">
                                 <FaLinkedin size={25} />
                             </a>
                             <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer">
@@ -93,18 +100,17 @@ function Myportfolio() {
                 </div>
 
                 {/* Home Image */}
-                <div className="home-img">
+                <div className="home-img" data-aos="fade-left">
                     <div className="img-box">
                         <div className="img-item">
                             <img src={salmanPort} alt="Portfolio" />
-
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* About Section */}
-            <section className="about" id="about">
+            <section className="about" id="about" data-aos="fade-up">
                 <h2>About Me </h2>
                 <p>
                     I am a passionate <strong>Full Stack Web Developer and Web Designer</strong> with over a year of
@@ -118,20 +124,19 @@ function Myportfolio() {
             </section>
 
             {/* Services Section */}
-            <section className="services" id="services">
+            <section className="services" id="services" data-aos="fade-up">
                 <h2>My Services</h2>
                 <div className="service-cards">
-                    <div className="service-card">
-                        <h3> <i class='bx bx-code-alt'></i>Web Development</h3>
+                    <div className="service-card" data-aos="fade-right">
+                        <h3> <i className='bx bx-code-alt'></i>Web Development</h3>
                         <p>
                             I build functional and scalable websites using HTML, CSS, JavaScript,
                             React, and the MERN stack. From user management to database integration,
                             I ensure smooth performance and security.
                         </p>
                     </div>
-                    <div className="service-card">
-                        <h3> <i class='bx bx-paint'></i>
-                            Web Designing</h3>
+                    <div className="service-card" data-aos="fade-left">
+                        <h3> <i className='bx bx-paint'></i> Web Designing</h3>
                         <p>
                             I design modern, user-friendly interfaces using creative tools and
                             frameworks. My focus is on responsive layouts, clean UI, and
@@ -143,58 +148,191 @@ function Myportfolio() {
 
             {/* Projects Section */}
             <section className="projects" id="projects">
-                <h2>My Projects</h2>
+                <h2 data-aos="fade-up">My Projects</h2>
 
-                <div className="project-item">
+                {/* Each project card animates individually */}
+                <div className="project-item" data-aos="fade-up" data-aos-delay="50">
                     <img src={Doctor} alt="Doctor" />
                     <h3>Doctor Appointment Booking System</h3>
                     <p>
                         A full-stack web application with user management, database integration,
                         and features for booking and managing doctor appointments.
                     </p>
+                    <p>
+                        <strong>Tech Stack:</strong> MERN (MongoDB, Express, React, Node.js)
+                    </p>
+                    <div className="project-links">
+                        <a
+                            href="https://medicare-lilac-two.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-link"
+                            style={{
+                                display: 'inline-block',
+                                marginTop: '10px',
+                                padding: '10px 20px',
+                                backgroundColor: '#00fff6',
+                                color: '#000',
+                                borderRadius: '8px',
+                                fontWeight: '600',
+                                textDecoration: 'none',
+                                cursor: 'pointer',
+                                transition: 'all 0.3s ease'
+                            }}
+                            onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
+                            onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                        >
+                            View Project
+                        </a>
+                    </div>
                 </div>
 
-                <div className="project-item">
+                <div className="project-item" data-aos="fade-up" data-aos-delay="100">
                     <img src={screenshot} alt="Clothing Website" />
-
                     <h3>Clothing Website</h3>
                     <p>
                         Built with HTML, CSS, and React.js featuring kids, women's, and men's wear
                         collections with a responsive and modern shopping interface.
                     </p>
+                    <p>
+                        <strong>Tech Stack:</strong> (HTML, CSS, React js)
+                    </p>
+                    <div className="project-links">
+                        <a
+                            href="https://ecommerce-sh5z.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-link"
+                            style={{
+                                display: 'inline-block',
+                                marginTop: '10px',
+                                padding: '10px 20px',
+                                backgroundColor: '#00fff6',
+                                color: '#000',
+                                borderRadius: '8px',
+                                fontWeight: '600',
+                                textDecoration: 'none',
+                                cursor: 'pointer',
+                                transition: 'all 0.3s ease'
+                            }}
+                            onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
+                            onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                        >
+                            View Project
+                        </a>
+                    </div>
                 </div>
 
-                <div className="project-item">
+                <div className="project-item" data-aos="fade-up" data-aos-delay="150">
                     <img src={foodImage} alt="Food" />
-
                     <h3>Food Recipe Website</h3>
                     <p>
                         Created using HTML, CSS, Bootstrap, and JavaScript. Users can browse recipes,
                         view step-by-step cooking instructions, and explore cuisines easily.
                     </p>
-                </div>
-
-                <div className="project-item">
-                    <img src={Todolist} alt="todolist" />
-                    <h3>To Do List</h3>
                     <p>
-                        A simple task management app built with HTML and CSS to keep track of
-                        daily activities and improve productivity.
+                        <strong>Tech Stack:</strong> (HTML, CSS, React js)
                     </p>
+                    <div className="project-links">
+                        <a
+                            href="https://taste-bite-beryl.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-link"
+                            style={{
+                                display: 'inline-block',
+                                marginTop: '10px',
+                                padding: '10px 20px',
+                                backgroundColor: '#00fff6',
+                                color: '#000',
+                                borderRadius: '8px',
+                                fontWeight: '600',
+                                textDecoration: 'none',
+                                cursor: 'pointer',
+                                transition: 'all 0.3s ease'
+                            }}
+                            onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
+                            onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                        >
+                            View Project
+                        </a>
+                    </div>
                 </div>
-                <div className="project-item">
-                    <img src={Qatar} alt="qatar carrier" />
 
+                <div className="project-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src={Todolist} alt="Typing Center Website" />
+                    <h3>Typing Center Website</h3>
+                    <p>
+                        A dynamic web application for a typing center built with React. It allows users
+                        to explore services, view staff details, and contact the center efficiently.
+                    </p>
+                    <p>
+                        <strong>Tech Stack:</strong> (React, HTML, CSS, JavaScript)
+                    </p>
+                    <div className="project-links">
+                        <a
+                            href="https://alsadiq-website-kszy.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-link"
+                            style={{
+                                display: 'inline-block',
+                                marginTop: '10px',
+                                padding: '10px 20px',
+                                backgroundColor: '#00fff6',
+                                color: '#000',
+                                borderRadius: '8px',
+                                fontWeight: '600',
+                                textDecoration: 'none',
+                                cursor: 'pointer',
+                                transition: 'all 0.3s ease'
+                            }}
+                            onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
+                            onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                        >
+                            View Project
+                        </a>
+                    </div>
+                </div>
+
+                <div className="project-item" data-aos="fade-up" data-aos-delay="250">
+                    <img src={Qatar} alt="qatar carrier" />
                     <h3>Qatar Carrier Project</h3>
                     <p>
                         Developed a full-stack job portal where job seekers can apply through a dynamic form.
-                        
                     </p>
+                    <p>
+                        <strong>Tech Stack:</strong> (React, HTML, CSS, JavaScript)
+                    </p>
+                    <div className="project-links">
+                        <a
+                            href="https://medicare-lilac-two.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-link"
+                            style={{
+                                display: 'inline-block',
+                                marginTop: '10px',
+                                padding: '10px 20px',
+                                backgroundColor: '#00fff6',
+                                color: '#000',
+                                borderRadius: '8px',
+                                fontWeight: '600',
+                                textDecoration: 'none',
+                                cursor: 'pointer',
+                                transition: 'all 0.3s ease'
+                            }}
+                            onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
+                            onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                        >
+                            View Project
+                        </a>
+                    </div>
                 </div>
             </section>
 
             {/* Contact Section */}
-            <section className="contact" id="contact">
+            <section className="contact" id="contact" data-aos="fade-up">
                 <h2>Get in Touch</h2>
                 <div className="contact-info">
                     <div><i className="bx bx-envelope"></i> salmanulfaris3377@gmail.com</div>
@@ -204,7 +342,7 @@ function Myportfolio() {
             </section>
 
             {/* Enquiry Section */}
-            <section className="enquiry" id="enquiry">
+            <section className="enquiry" id="enquiry" data-aos="fade-up">
                 <h2>Enquiry</h2>
                 <form>
                     <input type="text" placeholder="Your Name" required />
@@ -214,12 +352,11 @@ function Myportfolio() {
                     <button type="submit">
                         <i className="bx bx-send"></i> Send Message
                     </button>
-
                 </form>
             </section>
 
             {/* Footer */}
-            <footer className="footer">
+            <footer className="footer" data-aos="fade-up">
                 <div className="footer-links">
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
