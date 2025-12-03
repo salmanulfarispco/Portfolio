@@ -6,7 +6,7 @@ import "aos/dist/aos.css"; // AOS CSS
 import salmanPort from "./assets/salmanport.png";
 import screenshot from './assets/screenshot.png';
 import foodImage from './assets/food.png';
-import Todolist from './assets/Typing.png';
+import Todolist from './assets/typing.png';
 import Doctor from './assets/doctor.png';
 import Qatar from './assets/qatar.png';
 
